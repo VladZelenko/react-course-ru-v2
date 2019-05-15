@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import Car from './components/Car';
-import News from './components/News';
+// import News from './components/News';
 
 
 class App extends Component {
@@ -13,11 +13,12 @@ class App extends Component {
       { carName: "BMW", carYear: 2012 },
     ],
     pageTitle: 'Title cars',
+    showCars: false,
   }
 
-  changeTitleHandler = (newTitle) => {
+  toogleCarsHendler = () => {
     this.setState({
-      pageTitle: newTitle
+      showCars: !this.state.showCars
     })
   }
 
@@ -27,32 +28,44 @@ class App extends Component {
     })
   }
 
-  hendleInput = (event) => {
+  onChangeName = (name, index) => {
+    const car = this.state.cars[index]
+    car.carName = name
+    const cars = [...this.state.cars]
+    cars[index] = car
     this.setState({
-      pageTitle: event.target.value
+      cars: cars
     })
   }
 
+  deleteHendler(index) {
+    const cars = this.state.cars.concat()
+    cars.splice(index, 1)
+    this.setState({cars}) 
+  }
+
   render() {
-    const cars = this.state.cars
+    let cars = null
+
+    if (this.state.showCars) {
+      cars = this.state.cars.map((item, index) => {
+        return (
+          <Car
+            key={index}
+            name={item.carName}
+            year={item.carYear}
+            onDelete={this.deleteHendler.bind(this, index)}
+            onChangeName={(event) => this.onChangeName(event.target.value, index)}
+          />
+        )
+    })
+    }
+
     return (
       <Fragment>
-        <News />
-        {/* <Comments /> */}
         <h1>{this.state.pageTitle}</h1>
-        <input type="text" onChange={this.hendleInput}/><br />
-        <button onClick={this.changeTitleHandler.bind(this, 'new title here')}>Click me</button>
-        <Car
-          name={cars[0].carName}
-          year={cars[0].carYear}
-          onChangeTitle={this.changeTitleHandler.bind(this, cars[0].carName)}
-        />
-        <Car
-          name={cars[1].carName}
-          year={cars[1].carYear}
-          onChangeTitle={() => this.changeTitleHandler(cars[1].carName)}
-        />
-
+        <button onClick={this.toogleCarsHendler}>Toogle cars</button>
+        { cars }
         <br />
         <button onClick={this.resetPageTitle}>default page title</button>
       </Fragment>
