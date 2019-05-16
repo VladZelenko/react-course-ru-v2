@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import './Car.css';
+import classes from './Car.module.css';
 
 class Car extends Component {
     render() {
-        const inputClasses = ['input']
+        const inputClasses = [classes.input]
         if (this.props.name !== '') {
-            inputClasses.push('green')
+            inputClasses.push(classes.green)
         } else {
-            inputClasses.push('red')
+            inputClasses.push(classes.red)
         }
 
         if (this.props.name.length > 4) {
-            inputClasses.push('bold')
+            inputClasses.push(classes.bold)
         }
         return (
-            <div className="Car">
+            <div className={classes.Car}>
                 <p>Car: {this.props.name}</p>
                 <p>Year {this.props.year}</p>
                 <input

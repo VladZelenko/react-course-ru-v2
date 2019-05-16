@@ -9,10 +9,7 @@
 
 .input {
     border: 3px solid blue;
-}
-
-.input:active, .input:focus {
-    border: 3px solid #ccc;
+    outline: none;
 }
 
 .input.green {
