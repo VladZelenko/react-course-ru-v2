@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import Car from './components/Car';
+import Car from './components/Car/Car';
 // import News from './components/News';
 
 
@@ -43,6 +43,11 @@ class App extends Component {
     cars.splice(index, 1)
     this.setState({cars}) 
   }
+
+  // addCars() {
+  //   const cars = [...this.state.cars]
+  //   cars.push()
+  // }
 
   render() {
     let cars = null
