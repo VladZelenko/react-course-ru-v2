@@ -6,14 +6,17 @@ import Car from './components/Car/Car';
 
 class App extends Component {
 
-  state = {
-    cars: [
-      { carName: "Ford", carYear: 2017 },
-      { carName: "Audi", carYear: 2015 },
-      { carName: "BMW", carYear: 2012 },
-    ],
-    pageTitle: 'Title cars',
-    showCars: false,
+  constructor(props) {
+    super(props)
+    this.state = {
+      cars: [
+        { carName: "Ford", carYear: 2017 },
+        { carName: "Audi", carYear: 2015 },
+        { carName: "BMW", carYear: 2012 },
+      ],
+      pageTitle: 'Title cars',
+      showCars: false,
+    }
   }
 
   toogleCarsHendler = () => {
