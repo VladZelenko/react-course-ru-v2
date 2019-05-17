@@ -5,6 +5,7 @@
     margin: 10px auto;
     border-radius: 5px;
     box-shadow: 5px 5px 5px #ccc;
+    transition: border, box-shadow .5s;
 }
 
 .input {
