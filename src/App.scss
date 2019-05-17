@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+}
+
+.AppButton {
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid rgb(133, 133, 133);
+    background-color: #ccc;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 700;
+    &:focus, &:active {
+        outline: none;
+    }
+}

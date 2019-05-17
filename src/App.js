@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import './App.css';
+import './App.scss';
 import Car from './components/Car/Car';
 // import News from './components/News';
 
@@ -69,7 +69,10 @@ class App extends Component {
     return (
       <Fragment>
         <h1>{this.state.pageTitle}</h1>
-        <button onClick={this.toogleCarsHendler}>Toogle cars</button>
+        <button
+        className={"AppButton"}
+        onClick={this.toogleCarsHendler}
+        >Toogle cars</button>
         { cars }
         <br />
         <button onClick={this.resetPageTitle}>default page title</button>
