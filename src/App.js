@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './App.scss';
 import Car from './components/Car/Car';
-// import News from './components/News';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 
 class App extends Component {
@@ -44,39 +44,36 @@ class App extends Component {
   deleteHendler(index) {
     const cars = this.state.cars.concat()
     cars.splice(index, 1)
-    this.setState({cars}) 
+    this.setState({ cars })
   }
 
-  // addCars() {
-  //   const cars = [...this.state.cars]
-  //   cars.push()
-  // }
-
   render() {
+    console.log('App render')
     let cars = null
 
     if (this.state.showCars) {
       cars = this.state.cars.map((item, index) => {
         return (
-          <Car
-            key={index}
-            name={item.carName}
-            year={item.carYear}
-            onDelete={this.deleteHendler.bind(this, index)}
-            onChangeName={(event) => this.onChangeName(event.target.value, index)}
-          />
+          <ErrorBoundary key={index}>
+            <Car
+              name={item.carName}
+              year={item.carYear}
+              onDelete={this.deleteHendler.bind(this, index)}
+              onChangeName={(event) => this.onChangeName(event.target.value, index)}
+            />
+          </ErrorBoundary>
         )
-    })
+      })
     }
 
     return (
       <Fragment>
         <h1>{this.state.pageTitle}</h1>
         <button
-        className={"AppButton"}
-        onClick={this.toogleCarsHendler}
+          className={"AppButton"}
+          onClick={this.toogleCarsHendler}
         >Toogle cars</button>
-        { cars }
+        {cars}
         <br />
         <button onClick={this.resetPageTitle}>default page title</button>
       </Fragment>
