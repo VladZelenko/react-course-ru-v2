@@ -1,53 +1,11 @@
-import React, { Component } from 'react';
-import classes from './Car.module.css';
-// import Radium from 'radium';
+import React, { Component, Fragment } from 'react'
+import classes from './Car.module.css'
+import withClass from '../../hoc/withClass'
 
 class Car extends Component {
 
-    // componentWillReceiveProps(nextProps) {
-    //     console.log('Car componentWillReceiveProps ', nextProps)
-    // }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('Car shouldComponentUpdate ', nextProps, nextState)
-        return true
-    }   
-
-    // componentWillUpdate(nextProps, nextState) {
-    //     console.log('Car componentWillUpdate ', nextProps, nextState)
-    // }
-
-    // static getDerivedStateFromProps(nextProps, prevState) {
-    //     console.log('Car getDerivedStateFromProps', nextProps, prevState)
-
-    //     return prevState
-    // }
-
-    componentDidUpdate() {
-        console.log('Car componentDidUpdate ')
-    }
-
-    getSnapshotBeforeUpdate() {
-        console.log('Car getSnapshotBeforeUpdate ')
-    }
-
-    componentWillUnmount() {
-        console.log('Car componentWillUnmount')
-    }
-
+   
     render() {
-        console.log('Car render')
-
-        if(Math.random() > 0.7) {
-            throw new Error('Car random failed')
-        }
-        const style = {
-            ':hover': {
-                border: '1px solid #fff',
-                boxShadow: '0 4px 15px 0 rgba(0, 0, 0, .25)',
-                cursor: 'pointer',
-            }
-        }
         const inputClasses = [classes.input]
 
         if (this.props.name !== '') {
@@ -61,7 +19,7 @@ class Car extends Component {
         }
 
         return (
-            <div className={classes.Car} style={style}>
+            <Fragment>
                 <p>Car: {this.props.name}</p>
                 <p>Year {this.props.year}</p>
                 <input
@@ -71,9 +29,9 @@ class Car extends Component {
                     className={inputClasses.join(' ')}
                 />
                 <button onClick={this.props.onDelete}>Delete</button>
-            </div>
+            </Fragment>
         )
     }
 }
 
-export default Car;
+export default withClass(Car, classes.Car)

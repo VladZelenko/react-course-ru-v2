@@ -8,17 +8,19 @@
     transition: border, box-shadow .5s;
 }
 
+.Car:hover {
+    border: 1px solid #fff;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, .25);
+    cursor: pointer;
+}
+
 .input {
     border: 3px solid blue;
     outline: none;
 }
 
- .input.green {
-    border: 1px solid green;
-}
-.input.red {
-    border: 1px solid blueviolet;
-}
+.input.green {border: 1px solid green;}
+.input.red {border: 1px solid blueviolet;}
 
 .input.bold {
     border: 2px solid greenyellow;

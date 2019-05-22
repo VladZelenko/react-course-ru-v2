@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './App.scss';
 import Car from './components/Car/Car';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import Counter from './components/Counter/Counter';
 
 
 class App extends Component {
@@ -76,6 +77,7 @@ class App extends Component {
         {cars}
         <br />
         <button onClick={this.resetPageTitle}>default page title</button>
+        <Counter />
       </Fragment>
     );
   }
