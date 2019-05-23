@@ -59,6 +59,7 @@ class App extends Component {
             <Car
               name={item.carName}
               year={item.carYear}
+              index={index}
               onDelete={this.deleteHendler.bind(this, index)}
               onChangeName={(event) => this.onChangeName(event.target.value, index)}
             />
