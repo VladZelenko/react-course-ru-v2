@@ -1,10 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, createContext } from 'react';
 import './App.scss';
 import Car from './components/Car/Car';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import Counter from './components/Counter/Counter';
+import About from './components/About/About';
 
-export const ClickedContext = React.createContext(false)
+export const ClickedContext = createContext(false)
 
 class App extends Component {
 
@@ -72,6 +73,15 @@ class App extends Component {
 
     return (
       <Fragment>
+        <div>
+          <nav className="nav">
+            <ul style={{display: "flex", listStyle: "none", justifyContent: "center" }}>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+            </ul>
+          </nav>
+        </div>
+        <About />
         <h1>{this.state.pageTitle}</h1>
         <button
           className={"AppButton"}
