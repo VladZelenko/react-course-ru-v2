@@ -1,5 +1,6 @@
 import React, { Component, Fragment, createContext } from 'react';
 import './App.scss';
+import {Route, NavLink} from 'react-router-dom'
 import Car from './components/Car/Car';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import Counter from './components/Counter/Counter';
@@ -76,12 +77,15 @@ class App extends Component {
         <div>
           <nav className="nav">
             <ul style={{display: "flex", listStyle: "none", justifyContent: "center" }}>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
+              <li><NavLink to="/">Home</NavLink></li>
+              <li><NavLink to="/about">About</NavLink></li>
             </ul>
           </nav>
         </div>
-        <About />
+
+        <Route path="/" exact render={()=> <h1>Home PAGE</h1>}/>
+        <Route path="/about" component={About} />
+         
         <h1>{this.state.pageTitle}</h1>
         <button
           className={"AppButton"}
